@@ -16,6 +16,9 @@ jobs:
     
     steps:
 
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
       - name: Connect to Tailscale
         uses: ./.github/actions/tailscale
         with:
