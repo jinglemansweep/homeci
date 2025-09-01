@@ -33,4 +33,5 @@ jobs:
           
       - name: Your application logic here
         run: |
-          ping -c 5 dm1.svc.ptre.es
+          ping -c 1 10.1.1.1
+          ping -c 1 10.1.1.2
