@@ -1,0 +1,36 @@
+name: Tailscale Connection
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+
+  connect-tailscale:
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Connect to Tailscale
+        uses: tailscale/github-action@v3
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:github-actions
+          
+      - name: Test Tailscale connection
+        run: |
+          tailscale status
+          tailscale ip -4
+          
+      - name: Your application logic here
+        run: |
+          echo "Connected to Tailscale network"
+          echo "You can now access internal services or resources"
