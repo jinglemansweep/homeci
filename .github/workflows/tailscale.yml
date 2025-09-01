@@ -1,4 +1,4 @@
-name: Tailscale Test
+name: Tailscale Connectivity
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 
 jobs:
 
-  TailscaleTest:
+  TailscaleConnectivityTest:
     
     runs-on: ubuntu-latest
     environment: home

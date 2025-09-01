@@ -1,4 +1,4 @@
-name: Feature Flag Test
+name: Feature Flags
 
 on:
   push:
