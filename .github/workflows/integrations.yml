@@ -45,14 +45,6 @@ jobs:
           project-slug: ${{ vars.INFISICAL_PROJECT_SLUG }}
           secret-path: /export/github/test
 
-      # - name: Connect to Tailscale
-      #   uses: tailscale/github-action@v3
-      #   with:
-      #     oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
-      #     oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-      #     tags: ${{ vars.TS_TAGS }}
-      #     use-cache: "true"
-
       - name: Setup Docker Compose
         uses: docker/setup-compose-action@v1
 
