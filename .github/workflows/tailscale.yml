@@ -9,7 +9,7 @@ on:
 
 jobs:
 
-  TailscaleTest:
+  TailscaleConnectivityTest:
     
     runs-on: ubuntu-latest
     environment: home
@@ -18,14 +18,14 @@ jobs:
 
       - name: Checkout Code
         uses: actions/checkout@v4
-
+        
       - name: Connect to Tailscale
-        uses: ./.github/actions/tailscale
+        uses: tailscale/github-action@v3
         with:
           oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
-          oauth-client-secret: ${{ secrets.TS_OAUTH_CLIENT_SECRET }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
           tags: ${{ vars.TS_TAGS }}
-          use-cache: true
+          use-cache: "true"
 
       - name: Test Tailscale Connection
         run: |
