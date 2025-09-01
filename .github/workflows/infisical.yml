@@ -1,4 +1,4 @@
-name: Tailscale Test
+name: Infisical Test
 
 on:
   push:
