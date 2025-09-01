@@ -16,18 +16,16 @@ inputs:
     default: true
 
     
-jobs:
+runs:
+  
+  using: composite
+  
+  steps:
 
-  Connect:
-
-    runs-on: ubuntu-latest
-    
-    steps:
-
-      - name: Connect to Tailscale
-        uses: tailscale/github-action@v3
-        with:
-          oauth-client-id: ${{ inputs.oauth-client-id }}
-          oauth-secret: ${{ inputs.oauth-client-secret }}
-          tags: ${{ inputs.tags }}
-          use-cache: "${{ inputs.use-cache }}"
+    - name: Connect to Tailscale
+      uses: tailscale/github-action@v3
+      with:
+        oauth-client-id: ${{ inputs.oauth-client-id }}
+        oauth-secret: ${{ inputs.oauth-client-secret }}
+        tags: ${{ inputs.tags }}
+        use-cache: "${{ inputs.use-cache }}"
