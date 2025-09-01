@@ -24,7 +24,8 @@ jobs:
         with:
           oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
           oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-          tags: ${{ vars.TS_TAGS }} 
+          tags: ${{ vars.TS_TAGS }}
+          use-cache: "true"
 
       - name: Test Tailscale Connection
         run: |
