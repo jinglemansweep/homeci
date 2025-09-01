@@ -34,6 +34,12 @@ jobs:
       - name: Set up Docker
         uses: docker/setup-docker-action@v4
 
+      - name: Testing
+        run: |
+          docker ps
+        env:
+          DOCKER_HOST: tcp://dm1.svc.ptre.es
+
   InfisicalSecretsManager:
     
     runs-on: ubuntu-latest
