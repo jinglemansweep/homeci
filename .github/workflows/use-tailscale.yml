@@ -1,0 +1,32 @@
+name: Use Tailscale
+
+on:
+  workflow_call:
+    inputs:
+      tags:
+        type: string
+        required: true
+      use-cache:
+        type: boolean
+        default: true
+    secrets:
+      oauth-client-id:
+        required: true
+      oauth-client-secret:
+        required: true
+    
+jobs:
+
+  UseTailscale:
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+
+      - name: Connect to Tailscale
+        uses: tailscale/github-action@v3
+        with:
+          oauth-client-id: ${{ secrets.oauth-client-id }}
+          oauth-secret: ${{ secrets.oauth-client-secret }}
+          tags: ${{ inputs.tags }}
+          use-cache: ${{ inputs.use-cache }}
