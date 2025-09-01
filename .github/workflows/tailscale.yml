@@ -1,4 +1,4 @@
-name: Tailscale Connection
+name: Tailscale Test
 
 on:
   push:
@@ -9,10 +9,10 @@ on:
 
 jobs:
 
-  connect-tailscale:
+  Test:
     
     runs-on: ubuntu-latest
-    environment: Home
+    environment: home
     
     steps:
 
@@ -25,7 +25,7 @@ jobs:
           oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
           oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
           tags: ${{ vars.TS_TAGS }} 
-          
+
       - name: Test Tailscale connection
         run: |
           tailscale status
@@ -33,5 +33,4 @@ jobs:
           
       - name: Your application logic here
         run: |
-          echo "Connected to Tailscale network"
-          echo "You can now access internal services or resources"
+          ping -c 5 dm1.svc.ptre.es
