@@ -21,7 +21,8 @@ jobs:
         
       - name: Output All Feature Flags
         run: |
-          echo >>${GITHUB_STEP_SUMMARY} "HOMECI_FEATURE_TESTING: ${{ vars.HOMECI_FEATURE_TESTING }}"
+          echo >>${GITHUB_STEP_SUMMARY} "# Feature Flags"
+          echo >>${GITHUB_STEP_SUMMARY} "* `HOMECI_FEATURE_TESTING` => `${{ vars.HOMECI_FEATURE_TESTING }}`"
 
       - name: Only Run - TESTING
         run: |
