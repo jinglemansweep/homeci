@@ -1,0 +1,30 @@
+name: Tailscale Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+
+  Test:
+    
+    runs-on: ubuntu-latest
+    environment: home
+    
+    steps:
+
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        
+      - name: Login to Infisical
+        uses: Infisical/secrets-action@v1.0.9
+        with:
+          method: universal
+          client-id: ${{ secrets.INFISICAL_UNIVERSAL_AUTH_CLIENT_ID }}
+          client-secret: ${{ secrets.INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET }}
+          domain: ${{ vars.INFISICAL_DOMAIN }}
+          env-slug: ${{ vars.INFISICAL_ENV_SLUG }}
+          project-slug: ${{ vars.INFISICAL_PROJECT_SLUG }}
