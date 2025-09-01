@@ -1,0 +1,32 @@
+name: Feature Flag Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+
+  FeatureFlagTest:
+    
+    runs-on: ubuntu-latest
+    environment: home
+    
+    steps:
+
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        
+      - name: Output All Feature Flags
+        run: |
+          cat <<EOF
+          HOMECI_FEATURE_TESTING: ${{ vars.HOMECI_FEATURE_TESTING }}
+          EOF >> ${GITHUB_STEP_SUMMARY}
+
+      - name: Only Run - TESTING
+        run: |
+          echo ""
+        if: ${{ vars.HOMECI_FEATURE_TESTING }}
+  
