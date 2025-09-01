@@ -38,7 +38,7 @@ jobs:
         run: |
           docker ps
         env:
-          DOCKER_HOST: tcp://dm1.svc.ptre.es
+          DOCKER_HOST: tcp://${{ vars.DOCKER_HOST_MANAGER }}
 
   InfisicalSecretsManager:
     
