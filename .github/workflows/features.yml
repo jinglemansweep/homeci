@@ -21,12 +21,10 @@ jobs:
         
       - name: Output All Feature Flags
         run: |
-          cat <<EOF
-          HOMECI_FEATURE_TESTING: ${{ vars.HOMECI_FEATURE_TESTING }}
-          EOF >> ${GITHUB_STEP_SUMMARY}
+          echo >>${GITHUB_STEP_SUMMARY} "HOMECI_FEATURE_TESTING: ${{ vars.HOMECI_FEATURE_TESTING }}"
 
       - name: Only Run - TESTING
         run: |
-          echo ""
+          echo "TESTING FEATURE FLAG ENABLED"
         if: ${{ vars.HOMECI_FEATURE_TESTING }}
   
