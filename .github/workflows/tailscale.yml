@@ -9,7 +9,7 @@ on:
 
 jobs:
 
-  Test:
+  TailscaleTest:
     
     runs-on: ubuntu-latest
     environment: home

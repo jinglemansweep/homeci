@@ -9,7 +9,7 @@ on:
 
 jobs:
 
-  Test:
+  InfisicalTest:
     
     runs-on: ubuntu-latest
     environment: home
@@ -28,6 +28,7 @@ jobs:
           domain: ${{ vars.INFISICAL_DOMAIN }}
           env-slug: ${{ vars.INFISICAL_ENV_SLUG }}
           project-slug: ${{ vars.INFISICAL_PROJECT_SLUG }}
+          secret-path: /export/github/test
 
       - name: Output Secret Values
         run: |
