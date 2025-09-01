@@ -24,6 +24,33 @@ jobs:
           echo "TESTING FEATURE FLAG ENABLED"
         if: ${{ vars.HOMECI_FEATURE_TESTING }}
 
+  TailscaleConnection:
+    
+    runs-on: ubuntu-latest
+    environment: home
+    
+    steps:
+
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        
+      - name: Connect to Tailscale
+        uses: tailscale/github-action@v3
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: ${{ vars.TS_TAGS }}
+          use-cache: "true"
+
+      - name: Test Tailscale Connection
+        run: |
+          tailscale status
+          tailscale ip -4
+          
+      - name: Test Target Network Connection
+        run: |
+          ping -c 1 ${{ vars.TS_PING_IP }} 
+
   Docker:
 
     runs-on: ubuntu-latest
@@ -66,30 +93,3 @@ jobs:
           echo "Username:  ${USERNAME}"
           echo "API Token: ${API_TOKEN}"
           echo "Email:     ${EMAIL_ADDRESS}"
-
-  TailscaleConnection:
-    
-    runs-on: ubuntu-latest
-    environment: home
-    
-    steps:
-
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        
-      - name: Connect to Tailscale
-        uses: tailscale/github-action@v3
-        with:
-          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
-          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-          tags: ${{ vars.TS_TAGS }}
-          use-cache: "true"
-
-      - name: Test Tailscale Connection
-        run: |
-          tailscale status
-          tailscale ip -4
-          
-      - name: Test Target Network Connection
-        run: |
-          ping -c 1 ${{ vars.TS_PING_IP }} 
