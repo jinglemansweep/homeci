@@ -27,7 +27,7 @@ jobs:
       - name: Connect to Tailscale
         uses: tailscale/github-action@v3
         with:
-          oauth-client-id: ${{ secrets.oauth-client-id }}
-          oauth-secret: ${{ secrets.oauth-client-secret }}
+          oauth-client-id: ${{ inputs.oauth-client-id }}
+          oauth-secret: ${{ inputs.oauth-client-secret }}
           tags: ${{ inputs.tags }}
           use-cache: "${{ inputs.use-cache }}"
