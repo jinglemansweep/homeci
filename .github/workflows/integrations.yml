@@ -23,7 +23,17 @@ jobs:
         run: |
           echo "TESTING FEATURE FLAG ENABLED"
         if: ${{ vars.HOMECI_FEATURE_TESTING }}
-  
+
+  Docker:
+
+    runs-on: ubuntu-latest
+    environment: home
+    
+    steps:
+
+      - name: Set up Docker
+        uses: docker/setup-docker-action@v4
+
   InfisicalSecretsManager:
     
     runs-on: ubuntu-latest
