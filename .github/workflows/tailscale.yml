@@ -13,7 +13,7 @@ jobs:
     uses: ./.github/workflows/use-tailscale.yml
     with:
       tags: ${{ vars.TS_TAGS }}
-      use-cache: "true"
+      use-cache: true
     secrets:
       oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
       oauth-client-secret: ${{ secrets.TS_OAUTH_CLIENT_SECRET }}

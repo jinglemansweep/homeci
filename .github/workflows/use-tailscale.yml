@@ -29,4 +29,4 @@ jobs:
           oauth-client-id: ${{ secrets.oauth-client-id }}
           oauth-secret: ${{ secrets.oauth-client-secret }}
           tags: ${{ inputs.tags }}
-          use-cache: ${{ inputs.use-cache }}
+          use-cache: "${{ inputs.use-cache }}"
