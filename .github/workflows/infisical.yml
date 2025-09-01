@@ -28,3 +28,9 @@ jobs:
           domain: ${{ vars.INFISICAL_DOMAIN }}
           env-slug: ${{ vars.INFISICAL_ENV_SLUG }}
           project-slug: ${{ vars.INFISICAL_PROJECT_SLUG }}
+
+      - name: Output Secret Values
+        run: |
+          echo "Username:  ${USERNAME}"
+          echo "API Token: ${API_TOKEN}"
+          echo "Email:     ${EMAIL_ADDRESS}"
