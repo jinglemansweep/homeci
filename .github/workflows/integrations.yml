@@ -11,7 +11,7 @@ jobs:
 
   FeatureFlags:
     
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     environment: home
     
     steps:
@@ -45,22 +45,13 @@ jobs:
           project-slug: ${{ vars.INFISICAL_PROJECT_SLUG }}
           secret-path: /export/github/test
 
-      - name: Connect to Tailscale
-        uses: tailscale/github-action@v3
-        with:
-          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
-          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-          tags: ${{ vars.TS_TAGS }}
-          use-cache: "true"
-
-      - name: Test Tailscale Connection
-        run: |
-          tailscale status
-          tailscale ip -4
-          
-      - name: Test Target Network Connection
-        run: |
-          ping -c 1 ${{ vars.TS_PING_IP }} 
+      # - name: Connect to Tailscale
+      #   uses: tailscale/github-action@v3
+      #   with:
+      #     oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+      #     oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+      #     tags: ${{ vars.TS_TAGS }}
+      #     use-cache: "true"
 
       - name: Set up Docker
         uses: docker/setup-docker-action@v4
