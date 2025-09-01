@@ -12,6 +12,7 @@ jobs:
   connect-tailscale:
     
     runs-on: ubuntu-latest
+    environment: Home
     
     steps:
 
